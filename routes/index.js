@@ -13,7 +13,8 @@ router.post('/', function(req,res){
   jest.run([fileName]).then((result) => {
     stdMocks.restore();
     fs.unlink(fileName, (err) => {});
-    res.send(stdMocks.flush().stderr);
+    std = stdMocks.flush().stderr;
+    res.send({text: std, pass: !std.slice(-1)[0].includes('failed')});
   });
 
 });
