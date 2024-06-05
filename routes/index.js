@@ -14,7 +14,8 @@ router.post('/', function(req,res){
     stdMocks.restore();
     fs.unlink(fileName, (err) => {});
     std = stdMocks.flush().stderr;
-    res.send({text: std, pass: !std.slice(-1)[0].includes('failed')});
+    res.send({text: std.toString(), pass: !std.slice(-1)[0].includes('failed')});
+    console.log("FFFFf");
   });
 
 });
